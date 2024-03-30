@@ -2,10 +2,12 @@ return {
   {
     "nvim-telescope/telescope-ui-select.nvim",
   },
+
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
+    
     
     
     config = function()  
@@ -17,6 +19,7 @@ return {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
           },
+          
         },
         defaults = {
             mappings = {
@@ -31,6 +34,16 @@ return {
                     ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,    
 
                 },       
+            },
+            prompt_prefix = '   ',
+            selection_caret = ' ⭆ ',
+            entry_prefix = '   ',
+            path_display = { 'truncate' },
+            file_ignore_patterns = {
+                'dist',
+                'target',
+                'node_modules',
+                'pack/plugins',
             },
             layout_config = {
             horizontal = {
@@ -57,7 +70,13 @@ return {
             find_files = {
                 hidden = false
             }   
-        },     
+        }, 
+        extensions = {
+          recent_files = {
+              only_cwd = true,
+          },
+        }, 
+   
     })
     
     local builtin = require("telescope.builtin") 
@@ -67,7 +86,12 @@ return {
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     require("telescope").load_extension("ui-select")
+    require("telescope").load_extension("themes")
     end,
-    
+
   },
 }
+
+
+
+

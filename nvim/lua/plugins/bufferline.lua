@@ -1,4 +1,5 @@
-return {
+return 
+{
   "akinsho/bufferline.nvim",
   event = { "UIEnter" },
   keys = {
