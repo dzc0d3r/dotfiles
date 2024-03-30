@@ -1,0 +1,6 @@
+fzf
+lazydocker
+lazygit
+neovim
+ripgrep
+starship
