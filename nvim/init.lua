@@ -14,4 +14,5 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load options and plugins
 require("options")
+require("mappings")
 require("lazy").setup("plugins")
