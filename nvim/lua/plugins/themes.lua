@@ -18,7 +18,8 @@ return {
   "themercorp/themer.lua",
   config = function()
   require("themer").setup({
-      colorscheme = "jellybeans",
+      colorscheme = "kanagawa",
+      --transparent = true,
       styles = {
           ["function"] = { style = 'italic' },
           functionbuiltin = { style = 'italic' },
