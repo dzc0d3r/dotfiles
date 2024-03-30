@@ -30,7 +30,7 @@ return {
   config = function()
     require('lualine').setup {
         options = {
-            theme = bubbles_theme,
+            theme = "catppuccin-mocha",
             component_separators = '|',
             section_separators = { left = '', right = '' },
         },
@@ -39,7 +39,7 @@ return {
             {
                 require("noice").api.statusline.mode.get,
                 cond = require("noice").api.statusline.mode.has,
-                color = { fg = "#ff9e64" },
+                --color = { fg = "#ff9e64" },
             }
             },
             lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
