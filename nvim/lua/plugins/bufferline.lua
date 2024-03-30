@@ -47,7 +47,7 @@ return {
         return string.format("[%s]", opts.ordinal)
       end,
       separator_style = "thin",
-      always_show_bufferline = true,
+      always_show_bufferline = false,
       diagnostics_indicator = function(_, _, diag)
         local icons = require("NeutronVim.core.icons").diagnostics
         local ret = (diag.error and icons.Error .. " " .. diag.error .. " " or "")
