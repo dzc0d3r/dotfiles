@@ -52,24 +52,20 @@ return {
                 width = 0.92,
                 height = 0.92,
             },
+
+            
             },
             path_display = { "smart" },
             sorting_strategy = "ascending",
-            winblend = 0,
-            border = {},
-            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-            color_devicons = true,
-            use_less = true,
-            set_env = { ["COLORTERM"] = "truecolor" },
-            file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-            grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-            qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+
 
         },
         pickers = {
             find_files = {
                 hidden = false
-            }   
+            },
+
+
         }, 
         extensions = {
           recent_files = {
@@ -87,6 +83,97 @@ return {
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     require("telescope").load_extension("ui-select")
     require("telescope").load_extension("themes")
+
+
+    ----------------------------------------------------------------------
+    --                    UI CUSTOMIZATION                              --
+    ----------------------------------------------------------------------
+
+    -- Maybe use  colors from themer plugin later ??
+    --[[ local status_ok, theme_name = pcall(vim.api.nvim_get_var, "colors_name")
+    if not status_ok then
+    return
+    end
+    local colors = require("themer.modules.core.api").get_cp(theme_name) ]]
+
+
+    local normal_hl = vim.api.nvim_get_hl_by_name('Normal', true)
+    local dark = '#191919'
+    local light_dark = '#222831'
+    local purple = '#12121c'
+    local brown = '#6B240C'
+    local dark_blue = '#0A1D56'
+    local teal = '#176B87'
+
+    ----------------------------------------------------------------------
+    --                              Prompt                              --
+    ----------------------------------------------------------------------
+    vim.api.nvim_set_hl(0, 'TelescopePromptBorder', {
+        fg = purple,
+        bg = purple,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopePromptNormal', {
+        fg = normal_hl.foreground,
+        bg = purple,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopePromptTitle', {
+        fg = normal_hl.foreground,
+        bg = brown,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopePromptCounter', {
+        fg = brown,
+        bg = purple,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', {
+        fg = brown,
+        bg = purple3,
+    })
+
+    ----------------------------------------------------------------------
+    --                              Result                              --
+    ----------------------------------------------------------------------
+    vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', {
+        fg = light_dark,
+        bg = light_dark,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', {
+        fg = normal_hl.foreground,
+        bg = light_dark,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', {
+        fg = normal_hl.foreground,
+        bg = teal,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', {
+        fg = teal,
+        bg = vim.api.nvim_get_hl_by_name('TelescopeSelection', true).background,
+    })
+
+    ----------------------------------------------------------------------
+    --                             Preview                              --
+    ----------------------------------------------------------------------
+
+    vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', {
+        fg = dark,
+        bg = dark,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', {
+        fg = normal_hl.foreground,
+        bg = dark,
+    })
+
+    vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', {
+        fg = normal_hl.foreground,
+        bg = dark_blue,
+    })
     end,
 
   },
