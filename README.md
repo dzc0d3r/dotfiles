@@ -42,4 +42,10 @@ xargs brew install < leaves.txt
 
 #### 1. Neovim setup
 
-![](screenshots/nvim.mp4)
+
+
+
+
+https://github.com/dzc0d3r/dotfiles/assets/49822541/50eca323-5810-4e6c-be67-2186cd70491b
+
+
