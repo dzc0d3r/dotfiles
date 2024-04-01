@@ -82,101 +82,103 @@ return {
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     require("telescope").load_extension("ui-select")
-    require("telescope").load_extension("themes")
 
-
-    ----------------------------------------------------------------------
-    --                    UI CUSTOMIZATION                              --
-    ----------------------------------------------------------------------
-
-    -- Maybe use  colors from themer plugin later ??
-    --[[ local status_ok, theme_name = pcall(vim.api.nvim_get_var, "colors_name")
-    if not status_ok then
-    return
-    end
-    local colors = require("themer.modules.core.api").get_cp(theme_name) ]]
-
-
+-- Define a function to set Telescope highlights
+function setup_telescope_highlights()
     local normal_hl = vim.api.nvim_get_hl_by_name('Normal', true)
+
+    local purple = vim.api.nvim_get_hl_by_name('Comment', true).foreground
     local dark = '#191919'
     local light_dark = '#222831'
     local purple = '#12121c'
     local brown = '#6B240C'
     local dark_blue = '#0A1D56'
     local teal = '#176B87'
+    local TelescopePrompt = {
+        TelescopePromptBorder = {
+            fg = purple,
+            bg = purple,
+        },
+        TelescopePromptNormal = {
+            fg = normal_hl.foreground,
+            bg = purple,
+        },
+        TelescopePromptTitle = {
+            fg = normal_hl.foreground,
+            bg = brown,
+        },
+        TelescopePromptCounter = {
+            fg = brown,
+            bg = purple,
+        },
+        TelescopePromptPrefix = {
+            fg = brown,
+            bg = purple,
+        },
+    }
 
-    ----------------------------------------------------------------------
-    --                              Prompt                              --
-    ----------------------------------------------------------------------
-    vim.api.nvim_set_hl(0, 'TelescopePromptBorder', {
-        fg = purple,
-        bg = purple,
-    })
+    local TelescopeResults = {
+        TelescopeResultsBorder = {
+            fg = light_dark,
+            bg = light_dark,
+        },
+        TelescopeResultsNormal = {
+            fg = normal_hl.foreground,
+            bg = light_dark,
+        },
+        TelescopeResultsTitle = {
+            fg = normal_hl.foreground,
+            bg = teal,
+        },
+        TelescopeSelectionCaret = {
+            fg = teal,
+            bg = vim.api.nvim_get_hl_by_name('TelescopeSelection', true).background,
+        },
+    }
 
-    vim.api.nvim_set_hl(0, 'TelescopePromptNormal', {
-        fg = normal_hl.foreground,
-        bg = purple,
-    })
+    local TelescopePreview = {
+        TelescopePreviewBorder = {
+            fg = dark,
+            bg = dark,
+        },
+        TelescopePreviewNormal = {
+            fg = normal_hl.foreground,
+            bg = dark,
+        },
+        TelescopePreviewTitle = {
+            fg = normal_hl.foreground,
+            bg = dark_blue,
+        },
+    }
 
-    vim.api.nvim_set_hl(0, 'TelescopePromptTitle', {
-        fg = normal_hl.foreground,
-        bg = brown,
-    })
+    for hl, col in pairs(TelescopePrompt) do
+        vim.api.nvim_set_hl(0, hl, col)
+    end
 
-    vim.api.nvim_set_hl(0, 'TelescopePromptCounter', {
-        fg = brown,
-        bg = purple,
-    })
+    for hl, col in pairs(TelescopeResults) do
+        vim.api.nvim_set_hl(0, hl, col)
+    end
 
-    vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', {
-        fg = brown,
-        bg = purple3,
-    })
+    for hl, col in pairs(TelescopePreview) do
+        vim.api.nvim_set_hl(0, hl, col)
+    end
+end
 
-    ----------------------------------------------------------------------
-    --                              Result                              --
-    ----------------------------------------------------------------------
-    vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', {
-        fg = light_dark,
-        bg = light_dark,
-    })
+-- Call the setup function to initially set up Telescope highlights
+setup_telescope_highlights()
 
-    vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', {
-        fg = normal_hl.foreground,
-        bg = light_dark,
-    })
+-- Subscribe to the ColorScheme event to reset Telescope highlights whenever the theme changes
+vim.api.nvim_exec([[
+    augroup TelescopeTheme
+        autocmd!
+        autocmd ColorScheme * lua setup_telescope_highlights()
+    augroup END
+]], false)
 
-    vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', {
-        fg = normal_hl.foreground,
-        bg = teal,
-    })
-
-    vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', {
-        fg = teal,
-        bg = vim.api.nvim_get_hl_by_name('TelescopeSelection', true).background,
-    })
-
-    ----------------------------------------------------------------------
-    --                             Preview                              --
-    ----------------------------------------------------------------------
-
-    vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', {
-        fg = dark,
-        bg = dark,
-    })
-
-    vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', {
-        fg = normal_hl.foreground,
-        bg = dark,
-    })
-
-    vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', {
-        fg = normal_hl.foreground,
-        bg = dark_blue,
-    })
     end,
 
   },
+  
 }
 
 

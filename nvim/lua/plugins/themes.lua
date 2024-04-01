@@ -5,32 +5,47 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-        --vim.cmd.colorscheme "catppuccin"
+      --vim.cmd.colorscheme "catppuccin"
     end
 
   },
   {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-},
-{
-  "themercorp/themer.lua",
-  config = function()
-  require("themer").setup({
-      colorscheme = "kanagawa",
-      --transparent = true,
-      styles = {
-          ["function"] = { style = 'italic' },
-          functionbuiltin = { style = 'italic' },
-          variable = { style = 'italic' },
-            variableBuiltIn = { style = 'italic' },
-          parameter  = { style = 'italic' },
-      },
-      enable_installer = true,
-      enable_italics = true,
-      
-  })
-  end
-}
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme "kanagawa-wave"
+    end
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 2000,
+  },
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 2000,
+  },
+  {
+    "rose-pine/neovim",
+    lazy = false,
+    priority = 2000,
+  },
+  {
+    "sainnhe/sonokai",
+    lazy = false,
+    priority = 2000,
+  },
+  {
+    "sainnhe/edge",
+    lazy = false,
+    priority = 2000,
+  },
+  {
+    "sainnhe/everforest",
+    lazy = false,
+    priority = 2000,
+  },
+
 }

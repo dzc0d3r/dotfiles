@@ -42,10 +42,4 @@ xargs brew install < leaves.txt
 
 #### 1. Neovim setup
 
-![nvim](screenshots/nvim.png)
-![nvim01](screenshots/nvim01.png)
-![nvim1](screenshots/nvim1.png)
-![nvim2](screenshots/nvim2.png)
-![nvim3](screenshots/nvim3.png)
-![nvim4](screenshots/nvim4.png)
-![nvim5](screenshots/nvim5.png)
+![nvim](screenshots/nvim.mp4)
