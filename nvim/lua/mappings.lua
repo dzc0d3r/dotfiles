@@ -1,32 +1,41 @@
 
--- neo-tree mappings
-vim.keymap.set("n", "<leader>e", ":Neotree focus<CR>", {})
-vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", {})
-vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
-vim.keymap.set("n", "<leader>gf", ":Neotree float git_status", {})
+local map = vim.keymap.set
+
+map("n", ";", ":", { desc = "CMD enter command mode" })
+
+map("n", "<leader>fm", function()
+  require("conform").format()
+end, { desc = "File Format with conform" })
+
+map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
+-- neo-tree mappings 
+map("n", "<leader>e", ":Neotree focus<CR>", {})
+map("n", "<C-n>", ":Neotree toggle<CR>", {})
+map("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+map("n", "<leader>gf", ":Neotree float git_status", {})
 
 -- zenmode
-vim.keymap.set("n", "<leader>z", ":ZenMode <CR>", {})
+map("n", "<leader>z", ":ZenMode <CR>", {})
 
 
 
 -- trouble 
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+map("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
   {silent = true, noremap = true}
 )
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
   {silent = true, noremap = true}
 )
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
+map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
   {silent = true, noremap = true}
 )
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
   {silent = true, noremap = true}
 )
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
   {silent = true, noremap = true}
 )
-vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
+map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   {silent = true, noremap = true}
 )
 -- Diagnostic signs
@@ -43,5 +52,6 @@ for type, icon in pairs(signs) do
 end
 
 
-vim.keymap.set("n", "<leader>th", ":Telescope colorscheme theme=dropdown <CR>", {desc = "Telescope Choose a theme" })
+map("n", "<leader>th", ":Telescope colorscheme theme=dropdown <CR>", {desc = "Telescope Choose a theme" })
 
+map("n", "<leader>q", "<cmd>:q <cr>", {desc = "Quit" })
