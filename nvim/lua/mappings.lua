@@ -43,5 +43,5 @@ for type, icon in pairs(signs) do
 end
 
 
-vim.keymap.set("n", "<leader>th", ":Telescope colorscheme theme=dropdown <CR>", {})
+vim.keymap.set("n", "<leader>th", ":Telescope colorscheme theme=dropdown <CR>", {desc = "Telescope Choose a theme" })
 
