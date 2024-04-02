@@ -101,7 +101,7 @@ symbol = "󰆥 "
 symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = "󰎙 "
 
 [ocaml]
 symbol = " "
@@ -186,7 +186,9 @@ symbol = " "
 
 [zig]
 symbol = " "
-
+[dotnet]
+symbol = " "
+style = "lavender"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
