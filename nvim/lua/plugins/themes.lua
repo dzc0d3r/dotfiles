@@ -13,9 +13,6 @@ return {
     "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "kanagawa-wave"
-    end
   },
   {
     "folke/tokyonight.nvim",
@@ -41,6 +38,9 @@ return {
     "sainnhe/edge",
     lazy = false,
     priority = 2000,
+    config = function()
+      vim.cmd.colorscheme "edge"
+    end
   },
   {
     "sainnhe/everforest",
