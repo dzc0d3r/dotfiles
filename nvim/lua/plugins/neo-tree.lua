@@ -21,6 +21,20 @@ return {
             retain_hidden_root_indent = false, -- IF the root node is hidden, keep the indentation anyhow. 
 			add_blank_line_at_top = false,
 			indent_size = 3,
+      filesystem = {
+      filtered_items = {
+	 visible = true,
+	 show_hidden_count = true,
+	 hide_dotfiles = false,
+	 hide_gitignored = true,
+	 hide_by_name = {
+	   -- '.git',
+	   -- '.DS_Store',
+	   -- 'thumbs.db',
+	 },
+	never_show = {},
+      },
+    }
 		
 			
 		})
