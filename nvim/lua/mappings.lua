@@ -55,3 +55,4 @@ end
 map("n", "<leader>th", ":Telescope colorscheme theme=dropdown <CR>", {desc = "Telescope Choose a theme" })
 
 map("n", "<leader>q", "<cmd>:q <cr>", {desc = "Quit" })
+map("n", "<leader>Q", "<cmd>:qa <cr>", {desc = "Quit All" })
