@@ -9,13 +9,13 @@ end, { desc = "File Format with conform" })
 
 map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 -- neo-tree mappings 
-map("n", "<leader>e", ":Neotree focus<CR>", {})
-map("n", "<C-n>", ":Neotree toggle<CR>", {})
-map("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+map("n", "<leader>e", ":Neotree focus<cr>", {})
+map("n", "<C-n>", ":Neotree toggle<cr>", {})
+map("n", "<leader>bf", ":Neotree buffers reveal float<cr>", {})
 map("n", "<leader>gf", ":Neotree float git_status", {})
 
 -- zenmode
-map("n", "<leader>z", ":ZenMode <CR>", {})
+map("n", "<leader>z", ":ZenMode <cr>", {})
 
 
 
@@ -52,7 +52,8 @@ for type, icon in pairs(signs) do
 end
 
 
-map("n", "<leader>th", ":Telescope colorscheme theme=dropdown <CR>", {desc = "Telescope Choose a theme" })
+map("n", "<leader>th", ":Telescope colorscheme theme=dropdown <cr>", {desc = "Telescope Choose a theme" })
 
 map("n", "<leader>q", "<cmd>:q <cr>", {desc = "Quit" })
 map("n", "<leader>Q", "<cmd>:qa <cr>", {desc = "Quit All" })
+map("n", "<leader>nf", ":Neotree float <cr>", {desc = "Floating Neotree " })
