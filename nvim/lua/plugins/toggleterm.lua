@@ -17,7 +17,7 @@ return {
     local lazydocker = Terminal:new({ cmd = "lazydocker", hidden = true, direction = "float" })
     local python = Terminal:new({ cmd = "python3", hidden = true, direction = "float" })
     local node = Terminal:new({ cmd = "node", hidden = true, direction = "float" })
-    
+
     function _LAZYGIT_TOGGLE()
       lazygit:toggle()
     end
@@ -42,7 +42,7 @@ return {
       desc = "Open lazydocker in a floating terminal",
 
     },
-    
+
     { "<leader>tl", "<Cmd>lua _LAZYGIT_TOGGLE()<Cr>", 
       desc = "Open lazygit in a floating terminal",
 
