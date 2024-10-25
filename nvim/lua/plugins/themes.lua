@@ -1,4 +1,5 @@
 return {
+  { "Mofiqul/dracula.nvim" },
   {
     "catppuccin/nvim",
     lazy = false,
@@ -39,7 +40,7 @@ return {
     lazy = false,
     priority = 2000,
     config = function()
-      vim.cmd.colorscheme "edge"
+      vim.cmd.colorscheme "dracula"
     end
   },
   {
