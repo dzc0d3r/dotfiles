@@ -32,6 +32,9 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH=$PATH:$ANDROID_HOME/emulator
 
 
+export PATH="$HOME/.local/bin:$PATH"
+
+
 alias vim="vv"
 alias nvim="vv"
 . "/home/walid/.deno/env"

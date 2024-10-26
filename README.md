@@ -32,11 +32,14 @@ main list of packages:
 
 You can find the full list in `leaves.txt`
 
-##### Install using brew :
+##### Setup and create Symlinks :
 
 ```bash
-xargs brew install < leaves.txt
+./setup.sh
 ```
+output:
+```bash
+
 
 ### Screenshots
 

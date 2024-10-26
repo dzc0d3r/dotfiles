@@ -2,8 +2,13 @@
 
 dependencies=(tmux terminator mpd mpc ncmpcpp )
 
+print_in_red() {
+    echo -e "\033[31m$1\033[0m"
+}
+
 # Function to install dependencies
 install_dependencies() {
+    print_in_red "############# Info ###############"
     echo "Installing dependencies..."
     for package in "${dependencies[@]}"; do
         if ! command -v "$package" &> /dev/null; then
@@ -14,14 +19,17 @@ install_dependencies() {
         fi
     done
 }
+
 check_and_install_brew() {
     # Check if Homebrew is installed
     if ! command -v brew &> /dev/null; then
+        print_in_red "############# Info ###############"
         echo "Homebrew is not installed. Installing now..."
         # Install Homebrew
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         
         # Reload the shell to update the PATH
+        print_in_red "############## Skip ##############"
         echo "Homebrew installed. Reloading shell..."
         exec "$SHELL" --login
     else
@@ -30,6 +38,7 @@ check_and_install_brew() {
 
     # Install dependencies from leaves.txt
     if [ -f leaves.txt ]; then
+        print_in_red "############## Info ##############"
         echo "Checking dependencies from leaves.txt..."
         while IFS= read -r dep; do
             # Check if the dependency is already installed
@@ -52,18 +61,23 @@ setup() {
     stow .
     
     # Check if the line is already in .zshrc
+    
     if ! grep -q "source ~/.config/zshrc/.zshrc" ~/.zshrc; then
+        print_in_red "############# Info ###############"
         echo "source ~/.config/zshrc/.zshrc" >> ~/.zshrc
         echo "Added source line to .zshrc."
     else
+        print_in_red "############# Skip ###############"
         echo "Line for .zshrc already exists."
     fi
 
     # Check if the line is already in .tmux.conf
     if ! grep -q "tmux source ~/.config/tmux/.tmux.conf" ~/.tmux.conf; then
+        print_in_red "############# Info ###############"
         echo "tmux source ~/.config/tmux/.tmux.conf" >> ~/.tmux.conf
         echo "Added tmux source line to .tmux.conf."
     else
+        print_in_red "############# Skip ###############"
         echo "Line for .tmux.conf already exists."
     fi
 }
@@ -74,4 +88,5 @@ setup() {
 
 setup
 
+print_in_red "############# Info ###############"
 echo "Dotfiles installation complete!"
