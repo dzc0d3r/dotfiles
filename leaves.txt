@@ -1,6 +1,12 @@
+btop
+dust
+fdclone
 fzf
+glow
 lazydocker
 lazygit
 neovim
+poetry
 ripgrep
 starship
+yt-dlp

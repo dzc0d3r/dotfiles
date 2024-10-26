@@ -1,0 +1,5 @@
+--target=~/.config
+--ignore=.stowrc
+--ignore=setup.sh
+--ignore=leave.txt
+--ignore=README.md
