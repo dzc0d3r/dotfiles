@@ -37,9 +37,6 @@ You can find the full list in `leaves.txt`
 ```bash
 ./setup.sh
 ```
-output:
-```bash
-
 
 ### Screenshots
 
