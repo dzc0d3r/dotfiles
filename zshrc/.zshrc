@@ -8,11 +8,14 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Function to switch Neovim configuration using fzf and ripgrep
 # Function to select a nvim config symlink
 vv() {
+  # Not load the default vimrc and keep vim and nvim completely seperate
+  # because of the use of lazyvim, nvchad ...
+  unset VIMINIT
   local selected
   selected=$(find ~/.config -type l -name 'nvim*' | sort | fzf --height 8 --pointer '👉' --layout=reverse )
   
   if [ -n "$selected" ]; then
-    NVIM_APPNAME=$(basename "$selected") nvim "$@"
+    NVIM_APPNAME=$(basename "$selected") nvim "$@" && export VIMINIT="source $HOME/.config/vim/.vimrc"
   else
     echo "No selection made."
   fi
@@ -33,8 +36,9 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 
 
 export PATH="$HOME/.local/bin:$PATH"
+export VIMINIT="source $HOME/.config/vim/.vimrc"
 
 
-alias vim="vv"
+alias vi="vim"
 alias nvim="vv"
 . "/home/walid/.deno/env"

@@ -72,14 +72,7 @@ setup() {
     fi
 
     # Check if the line is already in .tmux.conf
-    if ! grep -q "tmux source ~/.config/tmux/.tmux.conf" ~/.tmux.conf; then
-        print_in_red "############# Info ###############"
-        echo "tmux source ~/.config/tmux/.tmux.conf" >> ~/.tmux.conf
-        echo "Added tmux source line to .tmux.conf."
-    else
-        print_in_red "############# Skip ###############"
-        echo "Line for .tmux.conf already exists."
-    fi
+    
 }
 
 
