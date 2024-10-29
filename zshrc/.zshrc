@@ -12,7 +12,7 @@ vv() {
   # because of the use of lazyvim, nvchad ...
   unset VIMINIT
   local selected
-  selected=$(find ~/.config -type l -name 'nvim*' | sort | fzf --height 8 --pointer '👉' --layout=reverse )
+  selected=$(find ~/.config -type l -name 'nvim*' | sort | nl -w2 -s'. ' | fzf --height 8 --border=rounded --border-label='Select nvim config' --pointer '👉' --layout=reverse )
   
   if [ -n "$selected" ]; then
     NVIM_APPNAME=$(basename "$selected") nvim "$@" && export VIMINIT="source $HOME/.config/vim/.vimrc"
@@ -20,6 +20,9 @@ vv() {
     echo "No selection made."
   fi
 }
+
+
+# Reload ~/.zshrc or restart terminal for changes to take effect
 
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -41,4 +44,6 @@ export VIMINIT="source $HOME/.config/vim/.vimrc"
 
 alias vi="vim"
 alias nvim="vv"
+alias tmpv="mpv --no-config --vo=sixel --profile=sw-fast  --really-quiet --vo-sixel-buffered=yes"
+
 . "/home/walid/.deno/env"

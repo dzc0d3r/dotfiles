@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dependencies=(tmux terminator mpd mpc ncmpcpp )
+dependencies=(tmux terminator mpd mpc ncmpcpp mpv wezterm)
 
 print_in_red() {
     echo -e "\033[31m$1\033[0m"
@@ -10,10 +10,21 @@ print_in_red() {
 install_dependencies() {
     print_in_red "############# Info ###############"
     echo "Installing dependencies..."
+    if ! sudo gpg --list-keys | grep -q "wezterm-fury.gpg"; then
+        echo "Adding WezTerm GPG key..."
+        curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
+        echo "Adding WezTerm repo .."
+        echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+    else
+        echo "WezTerm already exists in you source list"
+    fi
+
     for package in "${dependencies[@]}"; do
         if ! command -v "$package" &> /dev/null; then
+            echo "Running apt update"
+            sudo apt update -y
             echo "Installing $package..."
-            sudo apt-get install -y "$package"
+            sudo apt install -y "$package"
         else
             echo "$package is already installed."
         fi
