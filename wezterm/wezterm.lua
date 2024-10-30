@@ -8,7 +8,7 @@ wezterm.on('gui-startup', function(cmd)
   
   local tab, pane, window = mux.spawn_window(cmd or {})
   -- Create a split occupying the right 1/3 of the screen
-  pane:split { size = 0.66, direction="Left"}
+  --pane:split { size = 0.66, direction="Left"}
   window:gui_window():maximize()
   -- Create another split in the right of the remaining 2/3
   -- of the space; the resultant split is in the middle
@@ -35,10 +35,13 @@ end)
 -- For example, changing the color scheme:
 config.color_scheme = 'Dracula'
 -- config.enable_tab_bar = false
--- config.window_decorations = "NONE"
+config.window_decorations = "NONE"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 config.pane_focus_follows_mouse = true
+--config.bidi_enabled = true
+--config.bidi_direction = "LeftToRight"
+
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 

@@ -44,6 +44,6 @@ export VIMINIT="source $HOME/.config/vim/.vimrc"
 
 alias vi="vim"
 alias nvim="vv"
-alias tmpv="mpv --no-config --vo=sixel --profile=sw-fast  --really-quiet --vo-sixel-buffered=yes"
+alias tmpv="mpv --no-config --vo=sixel  --profile=sw-fast --really-quiet --vo-sixel-reqcolors=0 --ao='pulse'"
 
 . "/home/walid/.deno/env"
