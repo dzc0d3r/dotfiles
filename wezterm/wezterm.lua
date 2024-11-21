@@ -48,7 +48,7 @@ config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
 		{
 			key = 'f',
-			mods = 'CTRL',
+			mods = 'CTRL|SHIFT',
 			action = wezterm.action.ToggleFullScreen,
 		},
 		{
@@ -63,7 +63,7 @@ config.keys = {
     },
     {
       key = 'h',
-      mods = 'CTRL',
+      mods = 'CTRL|SHIFT',
       action = wezterm.action.EmitEvent("toggle-tabbar") ,
     },
 

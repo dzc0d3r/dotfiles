@@ -22,6 +22,27 @@ vv() {
 }
 
 
+dnode() {
+  GREEN='\033[0;32m'
+  NC='\033[0m' # No Color
+  RED='\033[1;31m'
+  # Check if --info flag is passed
+  if [[ "$1" == "--info" ]]; then
+    echo "${GREEN}[INFO]${NC} Calculating size of all node_modules directories in $(pwd)"
+    total_size=$(find . -name 'node_modules' -type d -not -path '*/.*' -prune -exec du -b '{}' + 2>/dev/null | awk '{total += $1} END {printf "%.2f GB\n", total/1024/1024/1024}')
+    echo "${GREEN}[INFO]${NC}: Total disk usage of all node_modules: ${RED}$total_size${NC}"
+    return
+  fi
+
+  find . -name 'node_modules' -type d -prune -not -path '*/.*' -print | \
+  awk '{print NR, $0}' | \
+  fzf --margin 1,1,1,1 --padding 2,1,1,2 --marker='📌' -m --border=rounded --border-label='Delete node_modules' --pointer '👉' --layout=reverse --with-nth=2.. \
+  --preview 'tree -L 1 -C $(echo {} | awk "{print \$2}") | head -20; echo ''; du -sh $(echo {} | awk "{print \$2}")' | \
+  awk '{$1=""; print $0}' | \
+  xargs -I {} rm -rvf '{}'
+}
+
+
 # Reload ~/.zshrc or restart terminal for changes to take effect
 
 export PATH="$PATH:$(go env GOPATH)/bin"
@@ -40,10 +61,22 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 
 export PATH="$HOME/.local/bin:$PATH"
 export VIMINIT="source $HOME/.config/vim/.vimrc"
-
+export FZF_DEFAULT_OPTS='--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'
 
 alias vi="vim"
 alias nvim="vv"
 alias tmpv="mpv --no-config --vo=sixel  --profile=sw-fast --really-quiet --vo-sixel-reqcolors=0 --ao='pulse'"
+#alias dnode='find . -name "node_modules" -type d -prune -not -path "*/.*" -print | awk "{print NR, \$0}" | fzf -m --border=rounded --border-label="Delete node_modules" --pointer "👉" --layout=reverse --with-nth=2.. --preview "tree -L 1 -C \$(echo {} | awk '\''{print \$2}'\'') | head -100; du -sh \$(echo {} | awk '\''{print \$2}'\'')" | awk "{\$1=\"\"; print \$0}" | xargs -I {} rm -rvf "{}"'
+
+
+alias prx="proxychains4"
 
 . "/home/walid/.deno/env"
+
+#export JAVA_HOME="/usr/lib/jvm/default-java"
+#export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+#export PATH="$JAVA_HOME/bin:$PATH"
+
+#export PATH=/usr/local/cuda/bin:$PATH
+#export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+

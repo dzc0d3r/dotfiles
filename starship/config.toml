@@ -7,7 +7,7 @@ $directory\
 \n$character
 """
 palette = "catppuccin_mocha"
-
+command_timeout = 8000
 # move the rest of the prompt to the right
 right_format = """$all"""
 

@@ -40,7 +40,7 @@ return {
     lazy = false,
     priority = 2000,
     config = function()
-      vim.cmd.colorscheme "dracula"
+      vim.cmd.colorscheme "dracula-soft"
     end
   },
   {

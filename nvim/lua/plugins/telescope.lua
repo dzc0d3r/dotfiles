@@ -36,7 +36,7 @@ return {
                 },       
             },
             prompt_prefix = '   ',
-            selection_caret = ' ⭆ ',
+            selection_caret = '👉', --' ⭆ ',
             entry_prefix = '   ',
             path_display = { 'truncate' },
             file_ignore_patterns = {
@@ -83,8 +83,8 @@ return {
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     require("telescope").load_extension("ui-select")
 
--- Define a function to set Telescope highlights
-function setup_telescope_highlights()
+-- Custom theme Define a function to set Telescope highlights
+--[[ function setup_telescope_highlights()
     local normal_hl = vim.api.nvim_get_hl_by_name('Normal', true)
 
     local purple = vim.api.nvim_get_hl_by_name('Comment', true).foreground
@@ -162,21 +162,21 @@ function setup_telescope_highlights()
     for hl, col in pairs(TelescopePreview) do
         vim.api.nvim_set_hl(0, hl, col)
     end
-end
+end ]]
 
 -- Call the setup function to initially set up Telescope highlights
-setup_telescope_highlights()
+--setup_telescope_highlights()
 
 -- Subscribe to the ColorScheme event to reset Telescope highlights whenever the theme changes
-vim.api.nvim_exec([[
+--[[ vim.api.nvim_exec([[
     augroup TelescopeTheme
         autocmd!
         autocmd ColorScheme * lua setup_telescope_highlights()
     augroup END
-]], false)
+]]--,false) ]]
 
-    end,
-
+    
+end
   },
   
 }
