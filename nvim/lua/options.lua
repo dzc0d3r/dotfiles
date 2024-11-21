@@ -18,8 +18,7 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 vim.wo.number = false
 vim.opt.termguicolors = true
-
-
+vim.o.termguicolors = true
 
 
 

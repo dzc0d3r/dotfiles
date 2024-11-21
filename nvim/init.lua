@@ -47,8 +47,11 @@ require("options")
 require("mappings")
 require("lazy").setup("plugins")
 
+vim.diagnostic.goto_next({ float = { border = 'rounded' }})
+vim.diagnostic.config({
+  float = { border = "rounded" },
+})
 
-
-
-
-
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})

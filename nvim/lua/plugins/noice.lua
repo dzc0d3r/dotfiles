@@ -23,9 +23,9 @@ return  {
           },
         },
         enabled = true,
-        view = "cmdline_popup", 
+        view = "cmdline_popup",
       },
-        
+
         --[[ views = {
           cmdline_popup = {
             border = {
@@ -43,13 +43,13 @@ return  {
         position = {
           row = 20,
           col = "50%",
-          
+
         },
         size = {
           width = 60,
           height = "auto",
         },
-        
+
       },
       popupmenu = {
         relative = "editor",
@@ -70,6 +70,9 @@ return  {
         },
       },
     },
+    presets = {
+		       lsp_doc_border = true, -- add a border to hover docs and signature help
+	   },
       })
       end,
 }

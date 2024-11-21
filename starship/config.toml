@@ -3,13 +3,13 @@
 # A minimal left prompt
 format = """
 $os\
-$directory\
-\n$character
+$directory$all\
+$character
 """
 palette = "catppuccin_mocha"
 command_timeout = 8000
 # move the rest of the prompt to the right
-right_format = """$all"""
+#right_format = """$all"""
 
 # Inserts a blank line between shell prompts
 add_newline = false

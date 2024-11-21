@@ -80,3 +80,6 @@ alias prx="proxychains4"
 #export PATH=/usr/local/cuda/bin:$PATH
 #export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
+if [ -n "$NVIM" ]; then
+  WEZTERM_SHELL_SKIP_ALL=1
+fi

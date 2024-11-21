@@ -5,7 +5,7 @@ local mux = wezterm.mux
 local config = wezterm.config_builder()
 
 wezterm.on('gui-startup', function(cmd)
-  
+
   local tab, pane, window = mux.spawn_window(cmd or {})
   -- Create a split occupying the right 1/3 of the screen
   --pane:split { size = 0.66, direction="Left"}
@@ -14,8 +14,8 @@ wezterm.on('gui-startup', function(cmd)
   -- of the space; the resultant split is in the middle
   -- 1/3 of the display and has the focus.
   -- pane:split {}
-  
-  
+
+
 end)
 wezterm.on("toggle-tabbar", function(window, _)
 	local overrides = window:get_config_overrides() or {}
@@ -33,7 +33,7 @@ end)
 
 
 -- For example, changing the color scheme:
-config.color_scheme = 'Dracula'
+config.color_scheme = 'tokyonight_night'
 -- config.enable_tab_bar = false
 config.window_decorations = "NONE"
 config.hide_tab_bar_if_only_one_tab = true
@@ -41,10 +41,11 @@ config.use_fancy_tab_bar = true
 config.pane_focus_follows_mouse = true
 --config.bidi_enabled = true
 --config.bidi_direction = "LeftToRight"
+config.enable_kitty_keyboard = true
+config.enable_kitty_graphics = true
+config.default_cursor_style = 'SteadyBlock'
 
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
-
-
 config.keys = {
 		{
 			key = 'f',
