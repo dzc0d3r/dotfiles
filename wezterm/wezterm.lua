@@ -41,8 +41,8 @@ config.use_fancy_tab_bar = true
 config.pane_focus_follows_mouse = true
 --config.bidi_enabled = true
 --config.bidi_direction = "LeftToRight"
-config.default_cursor_style = 'SteadyBlock'
-
+config.default_cursor_style = 'BlinkingBlock'
+config.warn_about_missing_glyphs = false
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
 		{
