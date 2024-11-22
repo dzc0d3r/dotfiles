@@ -2,22 +2,9 @@ return
 {
   "akinsho/bufferline.nvim",
   event = { "UIEnter" },
-  keys = {
+  --[[keys = {
     { ",t",      "<Cmd>BufferLineTogglePin<CR>",                            desc = "Toggle pin" },
-    { ",P",      "<Cmd>BufferLineGroupClose ungrouped<CR>",                 desc = "Delete non-pinned buffers" },
-    { ",o",      "<Cmd>BufferLineCloseOthers<CR>",                          desc = "Delete other buffers" },
-    { ",r",      "<Cmd>BufferLineCloseRight<CR>",                           desc = "Delete buffers to the right" },
-    { ",l",      "<Cmd>BufferLineCloseLeft<CR>",                            desc = "Delete buffers to the left" },
-    { ",p",      "<Cmd>BufferLinePick<CR>",                                 desc = "Pick buffer" },
-    { ",d",      "<Cmd>lua require('mini.bufremove').delete(n, false)<CR>", desc = "Pick buffer and close" },
-    { ",w",      "<Cmd>lua require('mini.bufremove').delete(n, false)<CR>", desc = "Pick buffer and close" },
-    { "]b",      "<cmd>BufferLineCycleNext<cr>",                            desc = "Next buffer" },
-    { "[b",      "<cmd>BufferLineCyclePrev<cr>",                            desc = "Prev buffer" },
-    { "<Tab>",   "<cmd>BufferLineCycleNext<cr>",                            desc = "Next buffer" },
-    { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>",                            desc = "Prev buffer" },
-    { "[m",      "<cmd>BufferLineMoveNext<cr>",                             desc = "Move to Next buffer" },
-    { "]m",      "<cmd>BufferLineMovePrev<cr>",                             desc = "Move to Prev buffer" },
-  },
+  },]]
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     "echasnovski/mini.bufremove",

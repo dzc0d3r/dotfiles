@@ -5,10 +5,6 @@ return {
     lazy = false,
     name = "catppuccin",
     priority = 1000,
-    config = function()
-      --vim.cmd.colorscheme "catppuccin"
-    end
-
   },
   {
     "rebelot/kanagawa.nvim",
@@ -39,9 +35,6 @@ return {
     "sainnhe/edge",
     lazy = false,
     priority = 2000,
-    config = function()
-      vim.cmd.colorscheme "tokyonight-night"
-    end
   },
   {
     "sainnhe/everforest",

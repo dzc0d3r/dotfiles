@@ -20,5 +20,37 @@ vim.wo.number = false
 vim.opt.termguicolors = true
 vim.o.termguicolors = true
 
+vim.api.nvim_create_autocmd("VimEnter", { command = "set nornu nonu", }) -- add: "| Neotree toggle" to the command. if you want
+vim.api.nvim_create_autocmd("BufEnter", { command = "set nornu nu", })
 
+-- Rounded border for Documentations
+vim.diagnostic.goto_next({ float = { border = 'rounded' } })
+vim.diagnostic.config({
+  float = { border = "rounded" },
+})
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
+-- Adds filetype recognition for .tact files
+vim.filetype.add({
+  extension = {
+    tact = "tact",
+  }
+})
+
+-- Auto-Close Neovim if Only Neo-Tree is Open
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("AutoCloseNeoTree", { clear = true }),
+  pattern = "Neotree",
+  callback = function()
+    if #vim.api.nvim_list_wins() == 1 then
+      vim.cmd("quit")
+    end
+  end,
+})
+
+vim.defer_fn(function()
+  vim.cmd.colorscheme("tokyonight-night")
+end, 0)

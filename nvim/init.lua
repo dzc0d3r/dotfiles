@@ -14,40 +14,15 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
---vim.api.nvim_create_autocmd("VimEnter", {command = "set nornu nonu | Neotree toggle",})
-vim.api.nvim_create_autocmd("BufEnter", { command = "set nornu nu", })
-
-
-
--- Adds filetype recognition for .tact files
-vim.filetype.add({
-  extension = {
-    tact = "tact",
-  }
-})
-
--- Auto-Close Neovim if Only Neo-Tree is Open
-vim.api.nvim_create_autocmd("BufEnter", {
-    group = vim.api.nvim_create_augroup("AutoCloseNeoTree", { clear = true }),
-    pattern = "Neotree",
-    callback = function()
-        if #vim.api.nvim_list_wins() == 1 then
-            vim.cmd("quit")
-        end
-    end,
-})
-
-
 -- Load options and plugins
 require("options")
-require("mappings")
 require("lazy").setup("plugins")
 
-vim.diagnostic.goto_next({ float = { border = 'rounded' }})
-vim.diagnostic.config({
-  float = { border = "rounded" },
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
+-- Load mappings
+local mappings = require("mappings")
+mappings.general_keymaps() -- General key mappings
+mappings.plugin_keymaps()  -- Plugin-specific key mappings
+-- After lazy.nvim has loaded plugins, load telescope mappings
+vim.defer_fn(function()
+  mappings.telescope_keymaps()
+end, 0)

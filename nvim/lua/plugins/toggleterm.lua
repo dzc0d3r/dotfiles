@@ -21,12 +21,15 @@ return {
     function _LAZYGIT_TOGGLE()
       lazygit:toggle()
     end
+
     function _LAZYDOCKER_TOGGLE()
       lazydocker:toggle()
     end
+
     function _PYTHON_TOGGLE()
       python:toggle()
     end
+
     function _NODE_TOGGLE()
       node:toggle()
     end
@@ -34,25 +37,35 @@ return {
 
   keys = {
     { [[<C-\>]] },
-    { "<leader>tv", "<Cmd>2ToggleTerm<Cr>",
+    {
+      "<leader>tv",
+      "<Cmd>2ToggleTerm<Cr>",
       desc = "Open a floating terminal at the current directory",
 
     },
-    { "<leader>td", "<Cmd>lua _LAZYDOCKER_TOGGLE()<Cr>", 
+    {
+      "<leader>td",
+      "<Cmd>lua _LAZYDOCKER_TOGGLE()<Cr>",
       desc = "Open lazydocker in a floating terminal",
 
     },
 
-    { "<leader>tl", "<Cmd>lua _LAZYGIT_TOGGLE()<Cr>", 
+    {
+      "<leader>tl",
+      "<Cmd>lua _LAZYGIT_TOGGLE()<Cr>",
       desc = "Open lazygit in a floating terminal",
 
     },
 
-    { "<leader>tp", "<Cmd>lua _PYTHON_TOGGLE()<Cr>", 
+    {
+      "<leader>tp",
+      "<Cmd>lua _PYTHON_TOGGLE()<Cr>",
       desc = "Open python in a floating terminal",
 
     },
-    { "<leader>tn", "<Cmd>lua _NODE_TOGGLE()<Cr>", 
+    {
+      "<leader>tn",
+      "<Cmd>lua _NODE_TOGGLE()<Cr>",
       desc = "Open node in a floating terminal",
     },
     {
@@ -60,5 +73,5 @@ return {
       "<cmd>ToggleTerm size=50 direction=float<cr>",
       desc = "Open a floating terminal at the current directory",
     },
-  },   
+  },
 }

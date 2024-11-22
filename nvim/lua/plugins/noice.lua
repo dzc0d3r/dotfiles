@@ -1,23 +1,22 @@
-return  {
-	  "folke/noice.nvim",
-	  event = "VeryLazy",
-	  opts = {
-	    -- add any options here
-	  },
-
-	  dependencies = {
-	    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-	    "MunifTanjim/nui.nvim",
-	    -- OPTIONAL:
-	    --   `nvim-notify` is only needed, if you want to use the notification view.
-	    --   If not available, we use `mini` as the fallback
-	    "rcarriga/nvim-notify",
-      -- "j-hui/fidget.nvim",
-	  },
-      config = function()
-      require("noice").setup({
-        cmdline = {
-         format = {
+return {
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    -- "j-hui/fidget.nvim",
+  },
+  config = function()
+    require("noice").setup({
+      cmdline = {
+        format = {
           cmdline = {
             title = " 👾👾👾 v.0X3111 👾👾👾 "
           },
@@ -25,8 +24,7 @@ return  {
         enabled = true,
         view = "cmdline_popup",
       },
-
-        --[[ views = {
+      --[[ views = {
           cmdline_popup = {
             border = {
               style = "none",
@@ -38,41 +36,39 @@ return  {
             },
           },
         }, ]]
-        views = {
-      cmdline_popup = {
-        position = {
-          row = 20,
-          col = "50%",
-
+      views = {
+        cmdline_popup = {
+          position = {
+            row = 20,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = "auto",
+          },
         },
-        size = {
-          width = 60,
-          height = "auto",
+        popupmenu = {
+          relative = "editor",
+          position = {
+            row = 8,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = 10,
+          },
+          border = {
+            style = "rounded",
+            padding = { 0, 1 },
+          },
+          win_options = {
+            winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+          },
         },
-
       },
-      popupmenu = {
-        relative = "editor",
-        position = {
-          row = 8,
-          col = "50%",
-        },
-        size = {
-          width = 60,
-          height = 10,
-        },
-        border = {
-          style = "rounded",
-          padding = { 0, 1 },
-        },
-        win_options = {
-          winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-        },
+      presets = {
+        lsp_doc_border = true, -- add a border to hover docs and signature help
       },
-    },
-    presets = {
-		       lsp_doc_border = true, -- add a border to hover docs and signature help
-	   },
-      })
-      end,
+    })
+  end,
 }

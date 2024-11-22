@@ -2,86 +2,69 @@ return {
   {
     "nvim-telescope/telescope-ui-select.nvim",
   },
-
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
-
-
-
     config = function()
       local actions = require("telescope.actions")
       local action_layout = require("telescope.actions.layout")
       require("telescope").setup({
-
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
           },
           recent_files = {
-              only_cwd = true,
+            only_cwd = true,
           },
 
         },
         defaults = {
-            mappings = {
-                i = {
-                    ["q"] = actions.close,
-                    ["<C-h>"] = actions.which_key,
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
-                    ["<leader>p"] = action_layout.toggle_preview,
-                    ["<C-u>"] = actions.preview_scrolling_up,
-                    ["<C-d>"] = actions.preview_scrolling_down,
-                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+          mappings = {
+            i = {
+              ["qq"] = actions.close,
+              ["<C-h>"] = actions.which_key,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<leader>p"] = action_layout.toggle_preview,
+              ["<C-u>"] = actions.preview_scrolling_up,
+              ["<C-d>"] = actions.preview_scrolling_down,
+              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 
-                },
             },
-            prompt_prefix = '   ',
-            selection_caret = '👉', --' ⭆ ',
-            entry_prefix = '   ',
-            path_display = { 'truncate' },
-            file_ignore_patterns = {
-                'dist',
-                'target',
-                'node_modules',
-                'pack/plugins',
-            },
-            layout_config = {
+          },
+          prompt_prefix = '   ',
+          selection_caret = '👉', --' ⭆ ',
+          entry_prefix = '   ',
+          path_display = { 'truncate' },
+          file_ignore_patterns = {
+            'dist',
+            'target',
+            'node_modules',
+            'pack/plugins',
+          },
+          layout_config = {
             horizontal = {
-                preview_cutoff = 0,
-                preview_width = 0.55,
-                width = 0.92,
-                height = 0.92,
+              preview_cutoff = 0,
+              preview_width = 0.55,
+              width = 0.92,
+              height = 0.92,
             },
-
-
-            },
-            -- path_display = { "smart" },
-            sorting_strategy = "ascending",
-
-
+          },
+          -- path_display = { "smart" },
+          sorting_strategy = "ascending",
         },
         pickers = {
-            find_files = {
-                hidden = false
-            },
-
-
+          find_files = {
+            hidden = false
+          },
         },
-    })
+      })
 
-    local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-    vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
-    vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
-    vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-    vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-    require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("ui-select")
 
--- Custom theme Define a function to set Telescope highlights
---[[ function setup_telescope_highlights()
+      -- Custom theme Define a function to set Telescope highlights
+      --[[ function setup_telescope_highlights()
     local normal_hl = vim.api.nvim_get_hl_by_name('Normal', true)
 
     local purple = vim.api.nvim_get_hl_by_name('Comment', true).foreground
@@ -161,23 +144,17 @@ return {
     end
 end ]]
 
--- Call the setup function to initially set up Telescope highlights
---setup_telescope_highlights()
+      -- Call the setup function to initially set up Telescope highlights
+      --setup_telescope_highlights()
 
--- Subscribe to the ColorScheme event to reset Telescope highlights whenever the theme changes
---[[ vim.api.nvim_exec([[
+      -- Subscribe to the ColorScheme event to reset Telescope highlights whenever the theme changes
+      --[[ vim.api.nvim_exec([[
     augroup TelescopeTheme
         autocmd!
         autocmd ColorScheme * lua setup_telescope_highlights()
     augroup END
-]]--,false) ]]
-
-
-end
+]] --,false) ]]
+    end
   },
 
 }
-
-
-
-

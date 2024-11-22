@@ -31,15 +31,10 @@ return {
           ['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
           ['b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
           ['e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
-
         },
         width = 27,
-        position = "left", -- Open on the left side
-
-
-
+        position = "left",               -- Open on the left side
       },
-
       hide_root_node = true,             -- Hide the root node.
       retain_hidden_root_indent = false, -- IF the root node is hidden, keep the indentation anyhow.
       add_blank_line_at_top = false,
@@ -57,12 +52,9 @@ return {
           show_hidden_count = true,
           hide_dotfiles = false,
           hide_gitignored = true,
-
           --never_show = {},
         },
       }
-
-
     })
   end,
 }

@@ -1,10 +1,7 @@
-return 
+return
 {
- "ellisonleao/glow.nvim",
-  config = function() 
-        require("glow").setup() 
+  "ellisonleao/glow.nvim",
+  config = function()
+    require("glow").setup()
   end
-  
-
-
 }
