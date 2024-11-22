@@ -41,8 +41,6 @@ config.use_fancy_tab_bar = true
 config.pane_focus_follows_mouse = true
 --config.bidi_enabled = true
 --config.bidi_direction = "LeftToRight"
-config.enable_kitty_keyboard = true
-config.enable_kitty_graphics = true
 config.default_cursor_style = 'SteadyBlock'
 
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }

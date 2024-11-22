@@ -14,6 +14,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+--vim.api.nvim_create_autocmd("VimEnter", {command = "set nornu nonu | Neotree toggle",})
+--vim.api.nvim_create_autocmd("BufEnter", { command = "set nornu nu", })
+
 
 
 -- Adds filetype recognition for .tact files
@@ -21,13 +24,6 @@ vim.filetype.add({
   extension = {
     tact = "tact",
   }
-})
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  command = "set nornu nonu | Neotree toggle",
-})
-vim.api.nvim_create_autocmd("BufEnter", {
-  command = "set nornu nu",
 })
 
 -- Auto-Close Neovim if Only Neo-Tree is Open
