@@ -17,12 +17,12 @@ return {
         documentation = cmp.config.window.bordered({
             border = 'rounded', -- Optional: Rounded borders for the documentation window
             winhighlight = 'Normal:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
-            
-            
+
+
         }),
     },
         view = {
-          entries = {name = 'custom', selection_order = 'near_cursor' } 
+          entries = {name = 'custom', selection_order = 'near_cursor' }
         },
         snippet = {
           expand = function(args)
@@ -58,8 +58,8 @@ return {
         },
         sources = {
           { name = 'nvim_lsp', priority = 1000 },
-          { name = 'luasnip' },
-          { name = "neorg" },
+          { name = 'luasnip', priority = 1100},
+          { name = "neorg" , priority = 1200},
         },
       })
     end

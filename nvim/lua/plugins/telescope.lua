@@ -19,6 +19,9 @@ return {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
           },
+          recent_files = {
+              only_cwd = true,
+          },
 
         },
         defaults = {
@@ -55,7 +58,7 @@ return {
 
 
             },
-            path_display = { "smart" },
+            -- path_display = { "smart" },
             sorting_strategy = "ascending",
 
 
@@ -67,12 +70,6 @@ return {
 
 
         },
-        extensions = {
-          recent_files = {
-              only_cwd = true,
-          },
-        },
-
     })
 
     local builtin = require("telescope.builtin")
