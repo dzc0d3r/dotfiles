@@ -49,15 +49,20 @@ function M.plugin_keymaps()
   map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle win.type=split win.position=left focus=true <cr>", {})
   map("n", "<leader>xf", "<cmd>Trouble diagnostics toggle focus=true win.type=split win.position=left filter.buf=0<cr>",
     {})
+  -- noice
+  map("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Dismiss current message show by noice" })
 end
 
-function M.telescope_keymaps()
-  if vim.fn.executable("fortune") == 1 then
-    -- Run the fortune command and store the output
-    local fortune_output = vim.fn.system("fortune -s -n 60")
+function M.telescope_keymaps(show_fortune)
+  local show = show_fortune or false
+  if show == true then
+    if vim.fn.executable("fortune") == 1 then
+      -- Run the fortune command and store the output
+      local fortune_output = vim.fn.system("fortune -s -n 60")
 
-    -- Print the fortune message to Neovim's command line
-    print(" 😎 " .. fortune_output)
+      -- Print the fortune message to Neovim's command line
+      print(" 😎 " .. fortune_output)
+    end
   end
   local ok, builtin = pcall(require, "telescope.builtin")
   if not ok then

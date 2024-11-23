@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dependencies=(tmux terminator nvim python3-pynvim vim mpd mpc ncmpcpp mpv wezterm)
+dependencies=(stow tmux terminator nvim python3-pynvim vim mpd mpc ncmpcpp mpv wezterm)
 
 print_in_red() {
   echo -e "\033[31m$1\033[0m"

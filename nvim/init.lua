@@ -24,5 +24,6 @@ mappings.general_keymaps() -- General key mappings
 mappings.plugin_keymaps()  -- Plugin-specific key mappings
 -- After lazy.nvim has loaded plugins, load telescope mappings
 vim.defer_fn(function()
+  -- takes one arg, true if you want to show a fortune cookie using fortune if installed on OS telescope_keymaps(true)
   mappings.telescope_keymaps()
 end, 0)

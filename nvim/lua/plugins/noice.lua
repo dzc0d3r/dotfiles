@@ -65,9 +65,26 @@ return {
             winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
           },
         },
+        -- replace messages: example is lsp progress when view is set to "notify" so it show one notification window
+        -- instead of multiple notifications
+        notify = {
+           replace = true
+        },
       },
       presets = {
         lsp_doc_border = true, -- add a border to hover docs and signature help
+      },
+      -- show lsp progress message in notify (powered by nvim-notify) instead of "mini"
+      lsp = {
+        progress = {
+          enabled = true,
+          view = "notify", -- default: "mini"
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        }
       },
     })
   end,
