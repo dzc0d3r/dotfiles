@@ -54,3 +54,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.defer_fn(function()
   vim.cmd.colorscheme("tokyonight-night")
 end, 0)
+
+vim.api.nvim_create_user_command('IndentFile', function()
+    vim.cmd('normal! gg=G')
+end, {})
+

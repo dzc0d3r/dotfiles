@@ -7,6 +7,7 @@ function M.general_keymaps()
   map("n", ";", ":", { desc = "CMD: Enter command mode" })
   map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
   map("n", "<leader>lf", "<cmd>:Format<cr>", { desc = "LSP Format current file." })
+  map('n', '<leader>i', function() vim.cmd('normal! gg=G') end, { desc = "Indent entire file" })
 
   -- Telescope
   map("n", "<leader>th", ":Telescope colorscheme theme=dropdown <cr>", { desc = "Telescope: Choose a theme" })
@@ -51,7 +52,13 @@ function M.plugin_keymaps()
 end
 
 function M.telescope_keymaps()
-  print("Setting up Telescope keymaps...") -- Debug line
+  if vim.fn.executable("fortune") == 1 then
+    -- Run the fortune command and store the output
+    local fortune_output = vim.fn.system("fortune -s -n 60")
+
+    -- Print the fortune message to Neovim's command line
+    print(" 😎 " .. fortune_output)
+  end
   local ok, builtin = pcall(require, "telescope.builtin")
   if not ok then
     vim.notify("Telescope is not loaded", vim.log.levels.WARN)
@@ -62,8 +69,8 @@ function M.telescope_keymaps()
   map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
   map("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
   map("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
-  map("n", "<leader>fh", builtin.oldfiles, { desc = "Old Files" })
-  map("n", "<leader>fo", builtin.help_tags, { desc = "Help Tags" })
+  map("n", "<leader>fo", builtin.oldfiles, { desc = "Old Files" })
+  map("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
 end
 
 -- LSP-Specific Keymaps

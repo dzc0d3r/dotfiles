@@ -14,6 +14,14 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- On attach function
 local function on_attach(_, bufnr)
   mappings.lsp_keymaps(bufnr)
+-- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+    if vim.lsp.buf.format then
+      vim.lsp.buf.format()
+    elseif vim.lsp.buf.formatting then
+      vim.lsp.buf.formatting()
+    end
+  end, { desc = 'Format current buffer with LSP' })
 end
 
 -- Plugins configuration
@@ -42,6 +50,7 @@ return {
           capabilities = capabilities,
         }
       end
+
     end
   }
 }

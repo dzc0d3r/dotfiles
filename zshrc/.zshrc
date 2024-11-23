@@ -21,7 +21,6 @@ vv() {
   fi
 }
 
-
 dnode() {
   GREEN='\033[0;32m'
   NC='\033[0m' # No Color
@@ -41,7 +40,14 @@ dnode() {
   awk '{$1=""; print $0}' | \
   xargs -I {} rm -rvf '{}'
 }
-
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # Reload ~/.zshrc or restart terminal for changes to take effect
 
@@ -62,10 +68,10 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH="$HOME/.local/bin:$PATH"
 export VIMINIT="source $HOME/.config/vim/.vimrc"
 export FZF_DEFAULT_OPTS='--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'
-
-alias vi="vim"
 alias nvim="vv"
+alias vi="vim"
 alias tmpv="mpv --no-config --vo=sixel  --profile=sw-fast --really-quiet --vo-sixel-reqcolors=0 --ao='pulse'"
+
 #alias dnode='find . -name "node_modules" -type d -prune -not -path "*/.*" -print | awk "{print NR, \$0}" | fzf -m --border=rounded --border-label="Delete node_modules" --pointer "👉" --layout=reverse --with-nth=2.. --preview "tree -L 1 -C \$(echo {} | awk '\''{print \$2}'\'') | head -100; du -sh \$(echo {} | awk '\''{print \$2}'\'')" | awk "{\$1=\"\"; print \$0}" | xargs -I {} rm -rvf "{}"'
 
 
