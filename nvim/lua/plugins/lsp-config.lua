@@ -4,7 +4,7 @@ local mappings = require('mappings')
 -- LSP servers to be installed and configured
 local servers = {
   'ts_ls', 'html', 'cssls', 'clangd', 'rust_analyzer',
-  'pyright', 'gopls', 'tailwindcss', 'lua_ls'
+  'pyright', 'gopls', 'tailwindcss', 'lua_ls', 'phpactor'
 }
 
 -- Define capabilities

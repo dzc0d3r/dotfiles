@@ -63,7 +63,7 @@ export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH=$PATH:$ANDROID_HOME/emulator
-
+export MANPAGER='nvim -u ~/.config/nvim/init.lua +Man!'
 
 export PATH="$HOME/.local/bin:$PATH"
 export VIMINIT="source $HOME/.config/vim/.vimrc"
@@ -89,3 +89,4 @@ alias prx="proxychains4"
 if [ -n "$NVIM" ]; then
   WEZTERM_SHELL_SKIP_ALL=1
 fi
+

@@ -4,13 +4,20 @@ local M = {}
 -- General Keymaps
 function M.general_keymaps()
   local map = vim.keymap.set
+
+  -- general key mappings
   map("n", ";", ":", { desc = "CMD: Enter command mode" })
   map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
+
+  -- file operations
   map("n", "<leader>lf", "<cmd>:Format<cr>", { desc = "LSP Format current file." })
   map('n', '<leader>i', function() vim.cmd('normal! gg=G') end, { desc = "Indent entire file" })
 
-  -- Telescope
-  map("n", "<leader>th", ":Telescope colorscheme theme=dropdown <cr>", { desc = "Telescope: Choose a theme" })
+  -- line number and relative line number
+  map('n', '<leader>nn', '<cmd> set nonu<cr>', { desc = "disable line numbers" })
+  map('n', '<leader>n', '<cmd> set nu<cr>', { desc = "disable line numbers" })
+  map('n', '<leader>nr', '<cmd> set rnu<cr>', { desc = "disable line numbers" })
+  map('n', '<leader>rr', '<cmd> set nornu<cr>', { desc = "disable line numbers" })
 
   -- Quit
   map("n", "<leader>q", "<cmd>:q <cr>", { desc = "Quit" })
@@ -76,6 +83,7 @@ function M.telescope_keymaps(show_fortune)
   map("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
   map("n", "<leader>fo", builtin.oldfiles, { desc = "Old Files" })
   map("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
+  map("n", "<leader>th", ":Telescope colorscheme theme=dropdown <cr>", { desc = "Telescope: Choose a theme" })
 end
 
 -- LSP-Specific Keymaps

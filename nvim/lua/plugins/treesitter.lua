@@ -16,7 +16,14 @@ return {
           requires_generate_from_grammar = false,
         }
       }
-
+      -- Install grammar with nvim-treesitter
+      parser_config.reason = {
+        install_info = {
+          url = "~/.local/git/tree-sitter-reason", -- a path to the cloned repo
+          files = { "src/parser.c", "src/scanner.c" },
+          branch = "master",
+        },
+      }
 
       configs.setup({
         auto_install = true,

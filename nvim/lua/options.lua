@@ -39,6 +39,15 @@ vim.filetype.add({
     tact = "tact",
   }
 })
+-- Adds reason as a filetype
+vim.filetype.add {
+  extension = {
+    re = "reason",
+  },
+}
+
+-- (Sometimes required): Tells neovim to load reason
+--vim.treesitter.language.add("reason", { filetype = "reason" })
 
 -- Auto-Close Neovim if Only Neo-Tree is Open
 vim.api.nvim_create_autocmd("BufEnter", {
